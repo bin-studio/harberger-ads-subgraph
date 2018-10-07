@@ -1,0 +1,26 @@
+{
+  "name": "harberger-ads-graph",
+  "version": "1.0.0",
+  "description": "graph protocol for harberger ads hackathon",
+  "main": "index.js",
+  "scripts": {
+    "codegen": "graph codegen --output-dir types/ subgraph.yaml",
+    "build": "graph build subgraph.yaml",
+    "build-ipfs": "graph build --ipfs /ip4/127.0.0.1/tcp/5001 subgraph.yaml",
+    "deploy": "graph deploy --ipfs /ip4/127.0.0.1/tcp/5001 --node http://127.0.0.1:8020 --subgraph-name harberger-ads subgraph.yaml",
+    "deploy-hosted": "graph deploy --ipfs /ip4/35.239.68.192/tcp/5001 --node http://104.198.242.70:8020 --subgraph-name harberger-ads subgraph.yaml --api-key beec783515b74c01a87fd0ec74506fa3",
+    "deploy-parity": "graph deploy --ipfs /ip4/35.239.68.192/tcp/5001 --node http://104.198.242.70:8020 --subgraph-name harberger-ads subgraph.yaml --api-key beec783515b74c01a87fd0ec74506fa3"
+  },
+  "keywords": [
+    "ethereum",
+    "harberger",
+    "the",
+    "graph"
+  ],
+  "author": "alan woo, billy rennekamp, nics kort, theo ephrim",
+  "license": "ISC",
+  "devDependencies": {
+    "@graphprotocol/graph-cli": "^0.3.2",
+    "@graphprotocol/graph-ts": "^0.3.2"
+  }
+}

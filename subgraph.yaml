@@ -1,0 +1,46 @@
+specVersion: 0.0.1
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: HarbergerAds
+    source:
+      # address: "0x72Bc6Ea507A449f63877ccA54B27c45Ee06C985f"
+      address: "0x298861323e8b68f8CD2Ee6Ca69eaF329Cfc2453E"
+      abi: HarbergerAds
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.1
+      language: wasm/assemblyscript
+      entities:
+        - Property
+      abis:
+        - name: HarbergerAds
+          file: ./abis/HarbergerAdsABI.json
+      eventHandlers:
+        - event: Change(uint256,address,address,uint256)
+          handler: handleChange
+        - event: TaxesPaid(uint256,address,uint256)
+          handler: handleTaxesPaid
+      file: ./src/HarbergerAds.ts
+  - kind: ethereum/contract
+    name: ERC20
+    source:
+      # address: "0xed31c93994029450Efbf25846d7c2F10642c69C2"
+      address: "0x39B0164e35Aaf4691e0f7eFD3807BE2850Db067A"
+      abi: ERC20
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.1
+      language: wasm/assemblyscript
+      entities:
+        - User
+      abis:
+        - name: ERC20
+          file: ./abis/ERC20ABI.json
+      eventHandlers:
+        - event: Approval(address,address,uint256)
+          handler: handleApproval
+        - event: Transfer(address,address,uint256)
+          handler: handleTransfer
+      file: ./src/ERC20.ts

@@ -1,0 +1,15 @@
+type Property @entity {
+  id: ID!
+  propertyId: BigInt!
+  owner: Bytes!
+  previousOwners: [Bytes!]!
+  # taxRecipient: Address!
+  price: BigInt!
+}
+
+type User @entity {
+  id: ID!
+  address: Bytes!
+  balance: BigInt!
+  allowance: BigInt!
+}
